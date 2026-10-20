@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAYTUBE BLUE - 50 Videos Gay +18</title>
+<style>
+:root{--blue:#081f44;--blue2:#123c7a;--blue3:#0a2e65;--yellow:#ffcc00;--yellow2:#ffdb4d}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--blue3);color:#fff;font-family:Arial,Helvetica,sans-serif}
+header{background:var(--blue);padding:12px 15px;border-bottom:3px solid var(--yellow);display:flex;gap:12px;align-items:center;position:sticky;top:0;z-index:100}
+header b{color:var(--yellow);font-size:22px;letter-spacing:1px} header input{flex:1;background:var(--blue2);border:1px solid #2e5aa8;color:#fff;padding:11px 16px;border-radius:24px;outline:none}
+header input:focus{border-color:var(--yellow)}
+.topbar{background:var(--blue2);padding:8px 15px;font-size:11px;color:#8fb0e0;display:flex;gap:15px;overflow:auto}
+.cats{display:flex;gap:8px;padding:12px 15px;overflow:auto;background:var(--blue);scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.cats span{border:1px solid #3a5a8a;padding:7px 16px;border-radius:20px;font-size:12px;cursor:pointer;white-space:nowrap;transition:.2s}
+.cats .active{background:var(--yellow);color:#000;border-color:var(--yellow);font-weight:bold}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px}
+@media(min-width:700px){.grid{grid-template-columns:1fr 1fr 1fr}} @media(min-width:1100px){.grid{grid-template-columns:1fr 1fr 1fr 1fr 1fr}}
+.card{background:var(--blue2);border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid #1e4a8a;transition:.2s}
+.card:hover{transform:translateY(-3px);border-color:var(--yellow);box-shadow:0 6px 20px #0005}
+.thumb{aspect-ratio:16/9;background:linear-gradient(135deg,#051736 0%,#123c7a 50%,#1a5ab5 100%);display:flex;align-items:center;justify-content:center;color:#6d9ad8;position:relative;font-weight:bold;font-size:10px;text-align:center}
+.thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,#0007,transparent)}
+.thumb span{position:relative;z-index:1}
+.thumb i{position:absolute;bottom:6px;right:6px;background:var(--yellow);color:#000;padding:3px 7px;border-radius:5px;font-size:10px;font-style:normal;font-weight:900;z-index:2}
+.thumb b{position:absolute;top:6px;left:6px;background:#000a;padding:3px 6px;border-radius:4px;font-size:9px;z-index:2}
+.info{padding:9px 10px;font-size:12px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.info small{color:#8aa0c5;display:block;font-size:10px;margin-top:3px}
+#modal,#adminBox{display:none;position:fixed;inset:0;background:#081f44f2;backdrop-filter:blur(8px);padding:15px;z-index:200;overflow:auto}
+.modal-box{background:var(--blue2);border:1px solid var(--yellow);border-radius:14px;padding:15px;max-width:800px;margin:20px auto}
+.btn{background:var(--yellow);color:#000;border:0;padding:11px 18px;border-radius:24px;font-weight:900;cursor:pointer}
+.input{width:100%;background:#061a38;border:1px solid #2e5aa8;color:#fff;padding:12px;border-radius:10px;margin:8px 0;outline:none}
+footer{padding:25px;text-align:center;color:#5a7ab0;font-size:10px;border-top:1px solid #1a3a6a;margin-top:20px;line-height:1.6}
+</style>
+</head>
+<body>
+<header><b>GAYTUBE BLUE</b><input id="search" placeholder="Buscar entre 50 videos..." oninput="render()"></header>
+<div class="topbar"><span>🔥 50 videos hoy</span><span>👁️ 1.2M visitas</span><span>✅ 18+ Verificado</span><span>💎 HD</span></div>
+<div class="cats" id="cats"></div>
+<div class="grid" id="grid"></div>
+<footer>GAYTUBE BLUE © 2026 - Plantilla UI educativa. Todo el contenido es de ejemplo con miniaturas genéricas. Actores mayores de 18 años.<br>18 U.S.C. 2257 | Diseño Amarillo #ffcc00 + Azul #0a2e65</footer>
+
+<div id="modal"><div class="modal-box">
+<button class="btn" onclick="modal.style.display='none'" style="float:right">X Cerrar</button>
+<h2 id="mTitle" style="color:var(--yellow);margin:10px 0"></h2>
+<div style="background:#051736;aspect-ratio:16/9;border-radius:10px;display:flex;align-items:center;justify-content:center;border:1px solid #2e5aa8;margin:12px 0;color:#5a7ab0" id="mPlayer">PLAYER HD - Reemplaza con tu video con derechos</div>
+<div style="display:flex;gap:8px"><button class="btn" onclick="this.innerText='👍 2.4k ✓'">👍 Like</button><button class="btn" style="background:#1a3a6a;color:#fff" onclick="navigator.clipboard.writeText(location.href);alert('Link copiado')">Compartir</button></div>
+<p id="mDesc" style="color:#c0d0e8;line-height:1.6;white-space:pre-wrap;margin-top:12px"></p>
+</div></div>
+
+<div id="adminBox"><div class="modal-box">
+<h2 style="color:var(--yellow)">GENERADOR DE ENLACE SECRETO</h2>
+<p style="color:#8aa0c5;font-size:13px;margin:8px 0">Instrucciones: Escribe tu mensaje privado, genera el link y envíaselo a tu contacto. Él debe abrir el VIDEO 3 para verlo.</p>
+<textarea id="msgIn" class="input" rows="4" placeholder="Ej: Nos vemos a las 8pm..."></textarea>
+<button class="btn" onclick="generar()">GENERAR LINK SECRETO</button>
+<input id="linkOut" class="input" readonly placeholder="Aquí saldrá tu link">
+<button class="btn" onclick="navigator.clipboard.writeText(linkOut.value);alert('Copiado!')">Copiar Link</button>
+<br><br><button onclick="adminBox.style.display='none'" style="background:#333;color:#fff;border:0;padding:8px 12px;border-radius:10px">Cerrar</button>
+</div></div>
+
+<script>
+const baseTitles=[
+"Latino musculoso debuta solo","Amateur de gym en la ducha","VIDEO ESPECIAL - Mensaje oculto aquí","Masaje hot con final caliente","Pareja latina casera sin censura","Vestuario del gym caliente","Estudiante seduce al profe","Twink en la ducha - primera vez","Bear peludo y daddy maduro","Casting de novato latino","Fiesta privada entre amigos","Solo en casa - hot","Latino muscle en boxer","Interracial amateur intenso","En la oficina después del trabajo","Primera vez frente a cámara","Twink rubio debut","Bear maduro dominante","En el coche a escondidas","Dúo latino caliente","Gym y ducha juntos","Latino muscle show","Hotel con amigo - casero","Muscle show en boxer","Noche hot con amigos","Pareja joven latina","Solo en la ducha - amateur","Maduro y joven - tabú","Muscle del gym - solo","Latino solo - sin censura","Fiesta hot en departamento","Casting latino - debut","Baño del gym - amateur","Daddy enseña a joven","Twink del gym - debut","Sauna - encuentro hot","Solo muscle - show privado","Pareja amateur caliente","Bear en el gym - cruising","Dúo latino - noche","Madrugada caliente","Hotel - muscle latino","Primera vez amateur","Bear muscle dominante","Latino en el gym - solo","Solo de noche - hot","Pareja muscle - pasión","Interracial en el gym","Latino amateur - casero","Final feliz en masaje","Chico nuevo del barrio - debut"
+];
+const catsList=["Amateur","Latino","Muscle","Bear","Roleplay","Solo","Grupo","Interracial","Tendencia","Twink","Daddy","Casting"];
+let videos=[]; for(let i=1;i<=50;i++){let c=catsList[i%catsList.length]; videos.push({id:i,t:baseTitles[i-1],c:c,d:`0${Math.floor(Math.random()*9)+1}:${String(Math.floor(Math.random()*60)).padStart(2,'0')}`,v:`${Math.floor(Math.random()*200)+10}k`});}
+const allCats=["Todos",...catsList]; let active="Todos"; const catsEl=document.getElementById('cats');
+allCats.forEach(c=>{let s=document.createElement('span');s.innerText=c;if(c===active)s.classList.add('active');s.onclick=()=>{active=c;document.querySelectorAll('.cats span').forEach(e=>e.classList.remove('active'));s.classList.add('active');render();};catsEl.appendChild(s);});
+function render(){const q=search.value.toLowerCase(); grid.innerHTML=""; videos.filter(v=>(active==="Todos"||v.c===active)&&v.t.toLowerCase().includes(q)).forEach(v=>{const d=document.createElement('div');d.className='card'; d.innerHTML=`<div class="thumb"><span>${v.c.toUpperCase()}</span><b>HD</b><i>${v.d}</i></div><div class="info">${v.t}<small>👁️ ${v.v} • ${v.c} • 18+</small></div>`; d.onclick=()=>play(v); grid.appendChild(d);});}
+function getHidden(){const p=new URLSearchParams(location.search).get('m');if(!p)return null;try{return atob(p);}catch{return null;}}
+function play(v){modal.style.display='block'; mTitle.innerText=v.t; if(v.id===3){const h=getHidden(); if(h){mDesc.innerText="💬 MENSAJE PRIVADO PARA TI:\n\n"+h+"\n\n---\nEste mensaje solo aparece con tu link especial."; return;}} mDesc.innerText=`${v.t}\nCategoría: ${v.c} | Duración: ${v.d} | Vistas: ${v.v}\n\nDescripción: Video de ejemplo ${v.c.toLowerCase()}. Todo el material es de actores adultos 18+ consensuado. Player HD disponible.\n\nSi quieres usar videos reales, sube tus propios videos con derechos a un hosting +18 y reemplaza el PLAYER.`;}
+function generar(){const t=msgIn.value.trim();if(!t){alert('Escribe mensaje');return;} linkOut.value=location.origin+location.pathname+"?m="+btoa(t);}
+if(new URLSearchParams(location.search).get('admin')==='1234'){adminBox.style.display='block';} render();
+</script>
+</body>
+</html>
